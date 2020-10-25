@@ -4,35 +4,51 @@ Begin VB.Form Form1
    BackColor       =   &H00000000&
    BorderStyle     =   0  'None
    Caption         =   "Form1"
-   ClientHeight    =   720
-   ClientLeft      =   11355
-   ClientTop       =   4785
-   ClientWidth     =   4320
+   ClientHeight    =   675
+   ClientLeft      =   10815
+   ClientTop       =   5385
+   ClientWidth     =   5745
    Icon            =   "Form1.frx":0000
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   720
-   ScaleWidth      =   4320
+   ScaleHeight     =   675
+   ScaleWidth      =   5745
    ShowInTaskbar   =   0   'False
-   Begin MSComDlg.CommonDialog cd 
-      Left            =   2160
-      Top             =   480
-      _ExtentX        =   847
-      _ExtentY        =   847
-      _Version        =   393216
-   End
    Begin VB.CommandButton ext 
       BackColor       =   &H000000FF&
       Caption         =   "退出"
       Height          =   735
-      Left            =   3600
+      Left            =   5040
       MaskColor       =   &H000000FF&
       Style           =   1  'Graphical
       TabIndex        =   4
       Top             =   0
       UseMaskColor    =   -1  'True
       Width           =   735
+   End
+   Begin VB.CommandButton downpage 
+      Caption         =   "下一页"
+      Height          =   735
+      Left            =   4320
+      TabIndex        =   7
+      Top             =   0
+      Width           =   735
+   End
+   Begin VB.CommandButton uppage 
+      Caption         =   "上一页"
+      Height          =   735
+      Left            =   3600
+      TabIndex        =   6
+      Top             =   0
+      Width           =   735
+   End
+   Begin MSComDlg.CommonDialog cd 
+      Left            =   2160
+      Top             =   480
+      _ExtentX        =   847
+      _ExtentY        =   847
+      _Version        =   393216
    End
    Begin VB.CommandButton clear 
       Caption         =   "清屏"
@@ -119,3 +135,4 @@ Private Sub penmouse_Click()
     Form2.esr = False
     Form2.Top = Screen.Height
 End Sub
+
