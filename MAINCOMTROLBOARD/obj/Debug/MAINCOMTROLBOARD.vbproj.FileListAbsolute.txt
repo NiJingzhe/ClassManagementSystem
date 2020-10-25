@@ -1,0 +1,12 @@
+C:\Users\Acer\Desktop\form\Pythonform\WxPythonform\SmartEduSystem\MainCtrlBoard\MAINCOMTROLBOARD\bin\Debug\MAINCOMTROLBOARD.exe.config
+C:\Users\Acer\Desktop\form\Pythonform\WxPythonform\SmartEduSystem\MainCtrlBoard\MAINCOMTROLBOARD\bin\Debug\MAINCOMTROLBOARD.exe
+C:\Users\Acer\Desktop\form\Pythonform\WxPythonform\SmartEduSystem\MainCtrlBoard\MAINCOMTROLBOARD\bin\Debug\MAINCOMTROLBOARD.pdb
+C:\Users\Acer\Desktop\form\Pythonform\WxPythonform\SmartEduSystem\MainCtrlBoard\MAINCOMTROLBOARD\bin\Debug\MAINCOMTROLBOARD.xml
+C:\Users\Acer\Desktop\form\Pythonform\WxPythonform\SmartEduSystem\MainCtrlBoard\MAINCOMTROLBOARD\obj\Debug\MAINCOMTROLBOARD.vbprojAssemblyReference.cache
+C:\Users\Acer\Desktop\form\Pythonform\WxPythonform\SmartEduSystem\MainCtrlBoard\MAINCOMTROLBOARD\obj\Debug\MAINCOMTROLBOARD.Form1.resources
+C:\Users\Acer\Desktop\form\Pythonform\WxPythonform\SmartEduSystem\MainCtrlBoard\MAINCOMTROLBOARD\obj\Debug\MAINCOMTROLBOARD.Resources.resources
+C:\Users\Acer\Desktop\form\Pythonform\WxPythonform\SmartEduSystem\MainCtrlBoard\MAINCOMTROLBOARD\obj\Debug\MAINCOMTROLBOARD.vbproj.GenerateResource.cache
+C:\Users\Acer\Desktop\form\Pythonform\WxPythonform\SmartEduSystem\MainCtrlBoard\MAINCOMTROLBOARD\obj\Debug\MAINCOMTROLBOARD.exe
+C:\Users\Acer\Desktop\form\Pythonform\WxPythonform\SmartEduSystem\MainCtrlBoard\MAINCOMTROLBOARD\obj\Debug\MAINCOMTROLBOARD.xml
+C:\Users\Acer\Desktop\form\Pythonform\WxPythonform\SmartEduSystem\MainCtrlBoard\MAINCOMTROLBOARD\obj\Debug\MAINCOMTROLBOARD.pdb
+C:\Users\Acer\Desktop\form\Pythonform\WxPythonform\SmartEduSystem\MainCtrlBoard\MAINCOMTROLBOARD\obj\Debug\MAINCOMTROLBOARD.MainControlBoard.resources
