@@ -236,11 +236,11 @@ SendMessage hwnd, WM_NCLBUTTONDOWN, HTCAPTION, 0&
 End Sub
 
 Private Sub animTimer_Timer()
+    If Abs(Me.Top - Screen.Width / 3) <= 1 Or alpha = 179 Then Debug.Print "finish": animTimer.Enabled = False
     alpha = alpha + (180 - alpha) * 0.3
     SetLayeredWindowAttributes hwnd, 0, alpha, LWA_ALPHA
     Me.Top = Me.Top - (Me.Top - Screen.Height / 3) * 0.5
     Debug.Print alpha
-    If Me.Top = Screen.Width / 3 Or alpha = 179 Then Debug.Print "finish": animTimer.Enabled = False
 End Sub
 
 
@@ -258,7 +258,10 @@ Private Sub Command1_Click()
    Form2.No.Text = Text1.Text
 End Sub
 Private Sub Command3_Click()
-
+    Open "..\NAMELIST\grpNo.gpn" For Output As #20
+        Print #20, gpn
+    Close #20
+    
     If Dir("..\NAMELIST\" + "namelist" + Text1.Text + ".txt", vbDirectory) = "" Then
         Unload Form2
         Load Form2
@@ -405,7 +408,7 @@ Private Sub Form_load()
     
     If opendate <> cmpdate Then
         If Val(gpn) = Val(maxgp) Then
-            gpn = CStr(0)
+            gpn = CStr(1)
         Else
             gpn = CStr(Val(gpn) + 1)
             Open "..\NAMELIST\" + "grpNo.gpn" For Output As #11
@@ -417,6 +420,10 @@ Private Sub Form_load()
             Print #16, opendate
         Close #16
     End If
+    
+    Open "..\NAMELIST\" + "grpNo.gpn" For Input As #22
+        Line Input #22, gpn
+    Close #22
     
     Text1.Text = gpn
     
@@ -517,6 +524,7 @@ Private Sub Form_load()
 End Sub
 
 Private Sub Label1_Click()
+    animTimer.Enabled = False
     unloadanim.Enabled = True
     Label1.BackColor = vbRed
 End Sub

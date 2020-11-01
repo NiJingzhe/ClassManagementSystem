@@ -148,10 +148,10 @@ Private Sub Form_MouseMove(Button As Integer, Shift As Integer, X As Single, Y A
 End Sub
 
 Private Sub animTimer_Timer()
+    If Abs(Me.Left - Screen.Width * 7 / 8) <= 1 Then animTimer.Enabled = False: Debug.Print "finish"
     alpha = alpha + (180 - alpha) * 0.3
     SetLayeredWindowAttributes hwnd, 0, alpha, LWA_ALPHA
     Me.Left = Me.Left - (Me.Left - Screen.Width * 7 / 8) * 0.5
-    If Me.Left = Screen.Width * 7 / 8 Then animTimer.Enabled = False
 End Sub
 
 
@@ -190,7 +190,7 @@ Private Sub Form_Load()
     Dim classrow() As String
     Dim k As Integer
     k = 0
-    Open "../COURSESHEET/CS.txt" For Input As #1
+    Open App.Path + "/CS.txt" For Input As #1
         Do While Not EOF(1)
             ReDim Preserve classrow(k)
             Line Input #1, classrow(k)
@@ -241,6 +241,7 @@ Private Sub Form_Load()
 End Sub
 
 Private Sub Label2_Click()
+    animTimer.Enabled = False
     unloadanim.Enabled = True
     Label2.BackColor = vbRed
     'Unload Me

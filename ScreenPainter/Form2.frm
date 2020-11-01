@@ -3,8 +3,8 @@ Begin VB.Form Form2
    BorderStyle     =   0  'None
    Caption         =   "Form2"
    ClientHeight    =   4545
-   ClientLeft      =   5220
-   ClientTop       =   5100
+   ClientLeft      =   7575
+   ClientTop       =   4680
    ClientWidth     =   6720
    DrawWidth       =   3
    LinkTopic       =   "Form2"
@@ -31,10 +31,8 @@ Public esr As Boolean
 Public color As ColorConstants
 Dim mx, my
 Public h As Boolean
-Public page As Integer
 
 Private Sub Form_Load()
-        page = 1
         Me.BackColor = &HFF0001
         Dim rtn As Long
         Dim BorderStyler

@@ -145,10 +145,10 @@ SendMessage hwnd, WM_NCLBUTTONDOWN, HTCAPTION, 0&
 End Sub
 
 Private Sub animTimer_Timer()
+    If Abs(Me.Left - Screen.Width * 3 / 4) <= 1 Then animTimer.Enabled = False: Debug.Print "finish"
     alpha = alpha + (180 - alpha) * 0.3
     SetLayeredWindowAttributes hwnd, 0, alpha, LWA_ALPHA
     Me.Left = Me.Left - (Me.Left - Screen.Width * 3 / 4) * 0.5
-    If Me.Left = Screen.Width * 3 / 4 Then animTimer.Enabled = False
 End Sub
 
 Private Sub Form_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
@@ -194,6 +194,7 @@ End Sub
 
 
 Private Sub Label1_Click()
+    animTimer.Enabled = False
     unloadanim.Enabled = True
     Label1.BackColor = vbRed
 End Sub
