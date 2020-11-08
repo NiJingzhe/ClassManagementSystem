@@ -130,7 +130,7 @@ Timer2.Enabled = True
 End Sub
 
 Private Sub Label1_Click()
-
+Form2.Show vbNormalFocus
 End Sub
 
 Private Sub Label3_Click()
