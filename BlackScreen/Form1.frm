@@ -17,13 +17,13 @@ Begin VB.Form Form1
    StartUpPosition =   3  '´°¿ÚÈ±Ê¡
    Begin VB.Timer Timer3 
       Enabled         =   0   'False
-      Interval        =   20
+      Interval        =   40
       Left            =   1440
       Top             =   3840
    End
    Begin VB.Timer Timer2 
       Enabled         =   0   'False
-      Interval        =   20
+      Interval        =   40
       Left            =   4320
       Top             =   2760
    End

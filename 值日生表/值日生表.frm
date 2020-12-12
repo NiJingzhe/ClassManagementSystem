@@ -17,19 +17,19 @@ Begin VB.Form Form1
    ShowInTaskbar   =   0   'False
    Begin VB.Timer pushinout 
       Enabled         =   0   'False
-      Interval        =   20
+      Interval        =   40
       Left            =   1560
       Top             =   2760
    End
    Begin VB.Timer unloadanim 
       Enabled         =   0   'False
-      Interval        =   20
+      Interval        =   40
       Left            =   720
       Top             =   4440
    End
    Begin VB.Timer animTimer 
       Enabled         =   0   'False
-      Interval        =   20
+      Interval        =   40
       Left            =   1080
       Top             =   1200
    End
@@ -171,6 +171,7 @@ Begin VB.Form Form1
    Begin VB.Label workname 
       Appearance      =   0  'Flat
       BackColor       =   &H80000008&
+      BackStyle       =   0  'Transparent
       Caption         =   "Namelist does not exsist"
       BeginProperty Font 
          Name            =   "µ»œﬂ"
@@ -227,6 +228,8 @@ Dim click As Boolean
 Dim opendate As String
 Dim cmpdate As String
 Dim gn As String
+Public theme As String
+Public themecol As ColorConstants
 
 
 Public Sub MoveForm(hwnd As Long)
@@ -288,8 +291,8 @@ Private Sub Command3_Click()
                         .Width = Me.Width - VScroll1.Width
                         .Height = Me.Height / nadd
                         .FontSize = (12 - 0.1 * (nadd - 1)) * 2
-                        .BackColor = vbBlack
-                        .ForeColor = vbWhite
+                        .BackColor = themecol
+                        .ForeColor = vbWhite - themecol
                     End With
                     Dim i
             
@@ -303,8 +306,8 @@ Private Sub Command3_Click()
                             .Left = 0
                             .Caption = namearr(i + 1)
                             .FontSize = (12 - 0.1 * (nadd - 1)) * 2
-                            .BackColor = vbBlack
-                            .ForeColor = vbWhite
+                            .BackColor = themecol
+                            .ForeColor = vbWhite - themecol
                         End With
                     Next i
                     
@@ -319,8 +322,8 @@ Private Sub Command3_Click()
                             .Left = 0
                             .Caption = namearr(i + 1)
                             .FontSize = (12 - 0.1 * (nadd - 1)) * 2
-                            .BackColor = vbBlack
-                            .ForeColor = vbWhite
+                            .BackColor = themecol
+                            .ForeColor = vbWhite - themecol
                         End With
                     Next i
             Else
@@ -332,8 +335,8 @@ Private Sub Command3_Click()
                         .Width = Me.Width - VScroll1.Width
                         .Height = Me.Height / (nadd)
                         .FontSize = (12 - 0.1 * (nadd - 1)) * 2
-                        .BackColor = vbBlack
-                        .ForeColor = vbWhite
+                        .BackColor = themecol
+                        .ForeColor = vbWhite - themecol
                     End With
                     For i = 1 To nadd - 1
                         With workname(i)
@@ -345,8 +348,8 @@ Private Sub Command3_Click()
                             .Left = 0
                             .Caption = namearr(i + 1)
                             .FontSize = (12 - 0.1 * (nadd - 1)) * 2
-                            .BackColor = vbBlack
-                            .ForeColor = vbWhite
+                            .BackColor = themecol
+                            .ForeColor = vbWhite - themecol
                         End With
                     Next i
                     
@@ -431,6 +434,18 @@ Private Sub Form_load()
     animTimer.Enabled = True
     
     
+    Open "../theme.thm" For Input As #30
+        Input #30, theme
+    Close #30
+    
+    If theme = "white" Then
+        themecol = vbWhite
+    Else
+        If theme = "black" Then
+            themecol = vbBlack
+        End If
+    End If
+    
     Dim rtn As Long
     Dim retValue As Long
     rtn = GetWindowLong(hwnd, GWL_EXSTYLE)
@@ -447,16 +462,23 @@ Private Sub Form_load()
     'Me.Top = Screen.Height * 13 / 30
     Me.Width = Screen.Width / 8
     Me.Height = Screen.Height * 16 / 30
+    Me.BackColor = themecol
     Label3.Top = 0
     Label3.Left = 0
+    Label3.ForeColor = vbWhite - themecol
     Text1.Top = 0
     Text1.Left = Label3.Width
+    Text1.BackColor = themecol
+    Text1.ForeColor = vbWhite - themecol
     Label2.Top = 0
     Label2.Left = Text1.Width + Label3.Width
+    Label2.ForeColor = vbWhite - themecol
     Label1.Width = Me.Width / 5
     Label1.Height = Label1.Width / 2
     Label1.Top = 0
     Label1.Left = Me.Width - Label1.Width
+    Label1.BackColor = themecol
+    Label1.ForeColor = vbWhite - themecol
     VScroll1.Top = mintop
     VScroll1.Left = Me.Width - VScroll1.Width
     VScroll1.Height = Me.Height - 200
@@ -469,6 +491,12 @@ Private Sub Form_load()
     Command1.Top = Me.Height - Command1.Height
     Command2.Top = Me.Height - Command2.Height
     Command3.Top = Me.Height - Command3.Height
+    Command1.BackColor = themecol
+    Command1.ForeColor = vbWhite - themecol
+    Command2.BackColor = themecol
+    Command2.ForeColor = vbWhite - themecol
+    Command3.BackColor = themecol
+    Command3.ForeColor = vbWhite - themecol
     Dim i As Integer
     n = 0
     
@@ -497,8 +525,8 @@ Private Sub Form_load()
             .Width = Me.Width - VScroll1.Width
             .Height = Me.Height / n
             .FontSize = (12 - 0.1 * (n - 1)) * 2
-            .BackColor = vbBlack
-            .ForeColor = vbWhite
+            .BackColor = themecol
+            .ForeColor = vbWhite - themecol
         End With
     
         For i = 1 To n - 1
@@ -512,8 +540,8 @@ Private Sub Form_load()
                 .Left = 0
                 .Caption = namearr(i + 1)
                 .FontSize = (12 - 0.1 * (n - 1)) * 2
-                .BackColor = vbBlack
-                .ForeColor = vbWhite
+                .BackColor = themecol
+                .ForeColor = vbWhite - themecol
             End With
         Next i
     End If

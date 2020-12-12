@@ -15,13 +15,13 @@ Begin VB.Form Form1
    ShowInTaskbar   =   0   'False
    Begin VB.Timer unloadanim 
       Enabled         =   0   'False
-      Interval        =   20
+      Interval        =   40
       Left            =   2880
       Top             =   600
    End
    Begin VB.Timer animTimer 
       Enabled         =   0   'False
-      Interval        =   20
+      Interval        =   40
       Left            =   720
       Top             =   1200
    End
@@ -53,6 +53,7 @@ Begin VB.Form Form1
       Alignment       =   2  'Center
       Appearance      =   0  'Flat
       BackColor       =   &H00000000&
+      BackStyle       =   0  'Transparent
       Caption         =   "Label2"
       BeginProperty Font 
          Name            =   "等线 Light"
@@ -74,6 +75,7 @@ Begin VB.Form Form1
       Alignment       =   2  'Center
       Appearance      =   0  'Flat
       BackColor       =   &H00000000&
+      BackStyle       =   0  'Transparent
       Caption         =   "Label2"
       BeginProperty Font 
          Name            =   "等线"
@@ -137,6 +139,8 @@ Private Const LWA_COLORKEY = &H2
 
 Dim ti As Long
 Dim alpha As Integer
+Public theme As String
+
  
 Public Sub MoveForm(hwnd As Long)
 DoEvents
@@ -157,11 +161,35 @@ End Sub
 
 
 Private Sub Form_Load()
+    
     Me.Left = Screen.Width
     Me.Top = 0
+    
+    Open App.Path + "\..\theme.thm" For Input As #30
+        Input #30, theme
+    Close #30
+    
+    If theme = "white" Then
+        Me.BackColor = &HFFFFFF
+        Label1.BackColor = &HFFFFFF
+        Label1.ForeColor = vbBlack
+        Label2.ForeColor = vbBlack
+        Label3.ForeColor = vbBlack
+    Else
+        If theme = "black" Then
+            Me.BackColor = &H0
+            Label1.BackColor = &H0
+            Label1.ForeColor = vbWhite
+            Label2.ForeColor = vbWhite
+            Label3.ForeColor = vbWhite
+        End If
+    End If
+
     alpha = 0
     animTimer.Enabled = True
     
+    
+   
     
     Dim rtn As Long
     Dim retValue As Long
@@ -206,6 +234,8 @@ End Sub
 Private Sub Label1_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
     Label1.BackColor = vbBlack
 End Sub
+
+
 
 
 Private Sub Timer1_Timer()

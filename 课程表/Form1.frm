@@ -5,8 +5,8 @@ Begin VB.Form Form1
    BorderStyle     =   0  'None
    Caption         =   "Form1"
    ClientHeight    =   6150
-   ClientLeft      =   13065
-   ClientTop       =   5010
+   ClientLeft      =   14130
+   ClientTop       =   5070
    ClientWidth     =   2970
    Icon            =   "Form1.frx":0000
    LinkTopic       =   "Form1"
@@ -17,13 +17,13 @@ Begin VB.Form Form1
    ShowInTaskbar   =   0   'False
    Begin VB.Timer unloadanim 
       Enabled         =   0   'False
-      Interval        =   20
+      Interval        =   40
       Left            =   1200
       Top             =   4800
    End
    Begin VB.Timer animTimer 
       Enabled         =   0   'False
-      Interval        =   20
+      Interval        =   40
       Left            =   1440
       Top             =   2880
    End
@@ -50,6 +50,8 @@ Begin VB.Form Form1
    End
    Begin VB.Label class 
       Alignment       =   2  'Center
+      Appearance      =   0  'Flat
+      BackColor       =   &H80000005&
       BackStyle       =   0  'Transparent
       BorderStyle     =   1  'Fixed Single
       Caption         =   "Label3"
@@ -135,6 +137,10 @@ Const WM_NCLBUTTONDOWN = &HA1
 
 Dim alpha As Integer
 
+Public theme As String
+Dim themecol As ColorConstants
+
+
 Public Sub MoveForm(hwnd As Long)
 DoEvents
 ReleaseCapture
@@ -156,13 +162,25 @@ End Sub
 
 
 Private Sub Form_Load()
-
+        
     Change = False
     classchange = Array("语文", "数学", "英语", "物理", "化学", "政治", "历史", "地理", "生物", "通用", "信息")
 
     alpha = 0
     Me.Left = Screen.Width
     animTimer.Enabled = True
+
+    Open "../theme.thm" For Input As #30
+        Input #30, theme
+    Close #30
+    
+    If theme = "white" Then
+        themecol = vbWhite
+    Else
+        If theme = "black" Then
+            themecol = vbBlack
+        End If
+    End If
 
     Dim rtn As Long
     Dim retValue As Long
@@ -175,12 +193,18 @@ Private Sub Form_Load()
     Me.Top = Screen.Height / 3
     Me.Height = Screen.Height * 16 / 30
     Me.Width = Screen.Width / 8
+    Me.BackColor = themecol
     Label1.Top = 0
     Label1.Left = 0
+    Label1.ForeColor = vbWhite - themecol
     Label2.Width = Me.Width / 5
     Label2.Height = Label2.Width / 2
     Label2.Top = 0
     Label2.Left = Me.Width - Label2.Width
+    Label2.BackColor = themecol
+    Label2.ForeColor = &HFFFFFF - themecol
+    Label3.BackColor = themecol
+    Label3.ForeColor = vbWhite - themecol
     
     Dim realtop As Integer, realheight As Integer
     realtop = Label2.Height
@@ -215,6 +239,7 @@ Private Sub Form_Load()
         .Left = 0
         .Top = realtop
         .Caption = classname(0)
+        .ForeColor = vbWhite - themecol
     End With
     
     Dim i As Integer
@@ -230,6 +255,7 @@ Private Sub Form_Load()
             .Left = 0
             .Top = realtop + (i) * class(i).Height
             .Caption = classname(i)
+            .ForeColor = vbWhite - themecol
         End With
     Next i
     
@@ -270,7 +296,7 @@ Private Sub Label2_MouseDown(Button As Integer, Shift As Integer, X As Single, Y
 End Sub
 
 Private Sub Label2_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
-    Label2.BackColor = vbBlack
+    Label2.BackColor = themecol
 End Sub
 
 Private Sub Label3_Click()
@@ -279,5 +305,5 @@ Private Sub Label3_Click()
 End Sub
 
 Private Sub Label3_MouseUp(Button As Integer, Shift As Integer, X As Single, Y As Single)
-    Label3.BackColor = vbBlack
+    Label3.BackColor = themecol
 End Sub

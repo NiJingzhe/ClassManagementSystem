@@ -2,11 +2,11 @@ VERSION 5.00
 Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Begin VB.Form Form1 
    BackColor       =   &H00000000&
-   BorderStyle     =   0  'None
+   BorderStyle     =   4  'Fixed ToolWindow
    Caption         =   "Form1"
    ClientHeight    =   720
-   ClientLeft      =   11355
-   ClientTop       =   4785
+   ClientLeft      =   12465
+   ClientTop       =   7785
    ClientWidth     =   4320
    Icon            =   "Form1.frx":0000
    LinkTopic       =   "Form1"
@@ -106,8 +106,13 @@ Private Sub Form_Load()
     Load Form2
     Form2.Visible = True
     Call SetWindowPos(Me.hwnd, -1, 0, 0, 0, 0, 3)
-    Me.Top = Screen.Height - Me.Height
+    Me.Top = Screen.Height - Me.Height * 2
     Me.Left = Screen.Width / 2 - Me.Width / 2
+End Sub
+
+Private Sub Form_QueryUnload(Cancel As Integer, UnloadMode As Integer)
+    Unload Form1
+    End
 End Sub
 
 Private Sub pen_Click()
